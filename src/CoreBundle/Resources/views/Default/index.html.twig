@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Test menu facebook</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <style>
+            body{
+                background-color: #E8E8E8;
+            }
+            .alignCenter{
+                text-align: center;
+            }
+            .label{
+                font-size: 16px;
+            }
+            .thumbnail{
+                padding: 20px;
+            }
+            .menu{
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="alignCenter">Test menu facebook</h1>
+
+            <h2>Menu L'Ilot Régal</h2>
+            <div class="row">
+                {% for menu in listMenuLilotRegal  %}
+                    <div class="col-md-12 thumbnail" >
+                        {% if menu.forToday == true %}
+                            <span class="label label-info">Menu du jour!</span>
+                        {% endif %}
+                        {% for meal in  menu.notifyPlate %}
+                            <span class="label label-success">{{ meal }} disponible!</span>
+                        {% endfor %}
+                        <div class="menu">
+                            {{ menu.content|raw }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <h2>Menu Régal du circuit</h2>
+            <div class="row">
+                {% for menu in listMenuRegalCircuit  %}
+                    <div class="col-md-12 thumbnail" >
+                        {% if menu.forToday == true %}
+                            <span class="label label-info">Menu du jour!</span>
+                        {% endif %}
+                        {% for meal in  menu.notifyPlate %}
+                            <span class="label label-success">{{ meal }} disponible!</span>
+                        {% endfor %}
+                        <div class="menu">
+                            {{ menu.content|raw }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </body>
+</html>
